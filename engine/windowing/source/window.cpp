@@ -3,8 +3,6 @@
 */
 #include "../include/window.hpp"
 
-#include <GLFW/glfw3.h>
-
 namespace Umbra::Windowing
 {
     Window::Window(std::string title, int width, int height) : title{title}, width{width}, height{height}
@@ -21,6 +19,14 @@ namespace Umbra::Windowing
     bool Window::ShouldClose()
     {
         return glfwWindowShouldClose(context);
+    }
+
+    void Window::createWindowSurface(VkInstance instance, VkSurfaceKHR* surface)
+    {
+        if (glfwCreateWindowSurface(instance, context, nullptr, surface) != VK_SUCCESS)
+        {
+            throw std::runtime_error("Error: Failed to created window surface.");
+        }
     }
 
     GLFWwindow* Window::GetContext()

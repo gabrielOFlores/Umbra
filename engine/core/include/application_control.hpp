@@ -9,6 +9,8 @@
 
 // Engine Members
 #include "../../windowing/include/window.hpp"
+#include "../../renderer/include/pipeline.hpp"
+#include "../../renderer/include/device.hpp"
 
 namespace Umbra::Core
 {
@@ -20,6 +22,10 @@ namespace Umbra::Core
             void run();
         private:
             std::string name;
-            Windowing::Window window{name, 1360, 768};
+            static constexpr int WIDTH = 1360;
+            static constexpr int HEIGHT = 768;
+            Windowing::Window window{name, WIDTH, HEIGHT};
+            Renderer::Device device{window};
+            Renderer::Pipeline pipeline{device, "../engine/renderer/shaders/base.vert.spv", "../engine/renderer/shaders/base.frag.spv", Renderer::Pipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
     };
 } // namespace Umbra::Core

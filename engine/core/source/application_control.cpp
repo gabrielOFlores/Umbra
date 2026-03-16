@@ -3,7 +3,6 @@
 */
 #include "../include/application_control.hpp"
 
-#define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
 namespace Umbra::Core
@@ -13,7 +12,6 @@ namespace Umbra::Core
         while (!window.ShouldClose())
         {
             glfwPollEvents();
-            
         }
         
     }

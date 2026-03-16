@@ -3,6 +3,9 @@
 */
 #pragma once
 
+#define GLFW_INCLUDE_VULKAN
+#include <GLFW/glfw3.h>
+
 // STD
 #include <string>
 #include <stdexcept>
@@ -17,6 +20,7 @@ namespace Umbra::Windowing
             Window(std::string title, int width, int height);
             ~Window();
             bool ShouldClose();
+            void createWindowSurface(VkInstance instance, VkSurfaceKHR* surface);
             GLFWwindow* GetContext();
         private:
             std::string title;
